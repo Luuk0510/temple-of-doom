@@ -8,7 +8,7 @@ namespace TempleOfDoom_Game.Model
 
         public Dictionary<Room, Direction> RoomDirectionMap { get; }
 
-        public IDoor Door { get; set; }
+        public IDoor Door { get; set; } = new Door();
 
         /// <summary>
         ///  Maakt een verbinding (Connection) met 1 of 2 kamers, afhankelijk van within.
