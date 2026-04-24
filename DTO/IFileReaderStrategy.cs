@@ -1,10 +1,8 @@
 ﻿using TempleOfDoom_DTO.DTO;
 
-namespace TempleOfDoom_DTO
+namespace TempleOfDoom_DTO;
+public interface IFileReaderStrategy
 {
-    public interface IFileReaderStrategy
-    {
-        GameDTO ReadFile(string filePath);
-    }
-
+    GameDTO ReadFile(string filePath);
 }
+

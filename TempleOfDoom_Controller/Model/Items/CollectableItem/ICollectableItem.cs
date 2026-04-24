@@ -1,6 +1,4 @@
-﻿namespace TempleOfDoom_Game.Model.Items.CollectableItem
+﻿namespace TempleOfDoom_Game.Model.Items.CollectableItem;
+public interface ICollectableItem : IItem
 {
-    public interface ICollectableItem : IItem
-    {
-    }
 }

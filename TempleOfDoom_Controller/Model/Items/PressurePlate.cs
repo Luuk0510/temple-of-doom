@@ -1,47 +1,46 @@
 ﻿using TempleOfDoom_Game.Model.Observer;
 
-namespace TempleOfDoom_Game.Model.Items
+namespace TempleOfDoom_Game.Model.Items;
+
+public class PressurePlate : IItem, IToggleDoorsObserver
 {
-    public class PressurePlate : IItem, IToggleDoorsObserver
+    public bool IsActivated { get; private set; }
+    public Coordinates Coordinates { get; set; }
+
+    private List<IPressurePlateObservable> _observers = [];
+
+    public PressurePlate(Coordinates coordinates)
     {
-        public bool IsActivated { get; private set; }
-        public Coordinates Coordinates { get; set; }
+        Coordinates = coordinates;
+    }
 
-        private List<IPressurePlateObservable> _observers = [];
+    public void AddObserver(IPressurePlateObservable observer) => _observers.Add(observer);
 
-        public PressurePlate(Coordinates coordinates)
+    public void RemoveObserver(IPressurePlateObservable observer) => _observers.Remove(observer);
+
+    public void NotifyObservers()
+    {
+        foreach (IPressurePlateObservable observer in _observers)
         {
-            Coordinates = coordinates;
+            observer.Update();
         }
+    }
 
-        public void AddObserver(IPressurePlateObservable observer) => _observers.Add(observer);
+    public void Interact(Player player)
+    {
+        IsActivated = true;
+        NotifyObservers();
+    }
 
-        public void RemoveObserver(IPressurePlateObservable observer) => _observers.Remove(observer);
+    public void Activate()
+    {
+        IsActivated = true;
+        NotifyObservers();
+    }
 
-        public void NotifyObservers()
-        {
-            foreach (IPressurePlateObservable observer in _observers)
-            {
-                observer.Update();
-            }
-        }
-
-        public void Interact(Player player)
-        {
-            IsActivated = true;
-            NotifyObservers();
-        }
-
-        public void Activate()
-        {
-            IsActivated = true;
-            NotifyObservers();
-        }
-
-        public void Reset()
-        {
-            IsActivated = false;
-            NotifyObservers();
-        }
+    public void Reset()
+    {
+        IsActivated = false;
+        NotifyObservers();
     }
 }

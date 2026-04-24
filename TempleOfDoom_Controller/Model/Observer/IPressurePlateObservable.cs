@@ -1,7 +1,5 @@
-﻿namespace TempleOfDoom_Game.Model.Observer
+﻿namespace TempleOfDoom_Game.Model.Observer;
+public interface IPressurePlateObservable
 {
-    public interface IPressurePlateObservable
-    {
-        void Update();
-    }
+    void Update();
 }

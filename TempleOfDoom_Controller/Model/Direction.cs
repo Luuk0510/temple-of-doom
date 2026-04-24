@@ -1,10 +1,8 @@
-﻿namespace TempleOfDoom_Game.Model
+﻿namespace TempleOfDoom_Game.Model;
+public enum Direction
 {
-    public enum Direction
-    {
-        North,
-        South,
-        East,
-        West
-    }
+    North,
+    South,
+    East,
+    West
 }

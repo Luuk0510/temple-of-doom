@@ -1,9 +1,7 @@
-﻿namespace TempleOfDoom_Game.Model.Items
+﻿namespace TempleOfDoom_Game.Model.Items;
+public interface IItem
 {
-    public interface IItem
-    {
-        Coordinates Coordinates { get; set; }
+    Coordinates Coordinates { get; set; }
 
-        void Interact(Player player);
-    }
+    void Interact(Player player);
 }
