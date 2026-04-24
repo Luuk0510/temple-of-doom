@@ -20,10 +20,10 @@ namespace TempleOfDoom_Game.Model
             Width = width;
             Height = height;
             Type = type;
-            Items = items ?? new List<IItem>();
+            Items = items ?? [];
             ConnectionDirectionMap = new Dictionary<Connection, Direction>();
-            SpecialFloorTiles = specialFloorTiles ?? new List<SpecialFloorTile>();
-            Enemies = enemies ?? new List<IEnemy>();
+            SpecialFloorTiles = specialFloorTiles ?? [];
+            Enemies = enemies ?? [];
         }
 
         /// <summary>

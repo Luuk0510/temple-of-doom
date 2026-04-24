@@ -24,7 +24,7 @@ namespace TempleOfDoom_DTO.DTOFactory
         /// </summary>
         public List<Connection> CreateConnections(ConnectionDTO[] connectionsDTO)
         {
-            List<Connection> initializedConnections = new List<Connection>();
+            List<Connection> initializedConnections = [];
 
             foreach (ConnectionDTO dto in connectionsDTO)
             {

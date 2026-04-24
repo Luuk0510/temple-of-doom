@@ -21,7 +21,7 @@ namespace TempleOfDoom_DTO.DTOFactory
         /// </summary>
         public List<Room> CreateRooms(RoomDTO[] roomsDTO)
         {
-            List<Room> initializedRooms = new List<Room>();
+            List<Room> initializedRooms = [];
 
             foreach (RoomDTO roomDTO in roomsDTO)
             {
@@ -38,9 +38,9 @@ namespace TempleOfDoom_DTO.DTOFactory
         private Room CreateRoom(RoomDTO roomDTO)
         {
             List<IItem>? createdItems = _itemsDTOFactory.CreateItems(roomDTO.items);
-            List<IItem> items = createdItems ?? new List<IItem>();
+            List<IItem> items = createdItems ?? [];
 
-            List<SpecialFloorTile> specialFloorTiles = new List<SpecialFloorTile>();
+            List<SpecialFloorTile> specialFloorTiles = [];
             if (roomDTO.specialFloorTiles != null)
             {
                 foreach (SpecialFloorTileDTO tileDTO in roomDTO.specialFloorTiles)
@@ -50,7 +50,7 @@ namespace TempleOfDoom_DTO.DTOFactory
                 }
             }
 
-            List<IEnemy> enemies = new List<IEnemy>();
+            List<IEnemy> enemies = [];
             if (roomDTO.enemies != null)
             {
                 enemies = _enemyDTOFactory.CreateEnemies(roomDTO.enemies);

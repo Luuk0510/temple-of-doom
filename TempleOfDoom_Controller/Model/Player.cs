@@ -16,7 +16,7 @@ namespace TempleOfDoom_Game.Model
             CurrentRoom = startRoom;
             Coordinates = startCoordinates;
             Lives = lives;
-            Inventory = new List<ICollectableItem>();
+            Inventory = [];
         }
 
         public void AddItem(ICollectableItem item) => Inventory.Add(item);

@@ -17,7 +17,7 @@ namespace TempleOfDoom_DTO.DTOFactory
                 return null;
             }
 
-            List<IItem> itemList = new List<IItem>();
+            List<IItem> itemList = [];
             foreach (ItemDTO itemDTO in itemsDTO)
             {
                 IItem? newItem = CreateItemFromDTO(itemDTO);

@@ -15,10 +15,10 @@ namespace TempleOfDoom_DTO.DTOFactory
         {
             if (enemiesDTO == null || enemiesDTO.Length == 0)
             {
-                return new List<IEnemy>();
+                return [];
             }
 
-            List<IEnemy> enemies = new List<IEnemy>();
+            List<IEnemy> enemies = [];
 
             foreach (EnemyDTO enemyDTO in enemiesDTO)
             {

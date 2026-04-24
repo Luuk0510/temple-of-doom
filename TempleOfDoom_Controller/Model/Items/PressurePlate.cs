@@ -7,7 +7,7 @@ namespace TempleOfDoom_Game.Model.Items
         public bool IsActivated { get; private set; }
         public Coordinates Coordinates { get; set; }
 
-        private List<IPressurePlateObservable> _observers = new List<IPressurePlateObservable>();
+        private List<IPressurePlateObservable> _observers = [];
 
         public PressurePlate(Coordinates coordinates)
         {
