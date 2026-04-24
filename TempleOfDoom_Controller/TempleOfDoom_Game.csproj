@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net10.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Reference Include="CODE_TempleOfDoom_DownloadableContent">
+			<HintPath>..\TempleOfDoom\CODE_TempleOfDoom_DownloadableContent.dll</HintPath>
+		</Reference>
+	</ItemGroup>
+
+</Project>

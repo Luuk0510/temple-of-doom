@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34309.116
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TempleOfDoom", "TempleOfDoom\TempleOfDoom.csproj", "{D44D21F3-791B-4F90-98A9-6EAFF2FFA5C9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TempleOfDoom_DTO", "DTO\TempleOfDoom_DTO.csproj", "{7A24B0C1-6126-4C02-9AAF-6ACF24D8E6BB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TempleOfDoom_UserInterface", "UserInterface\TempleOfDoom_UserInterface.csproj", "{B5668D2B-54DC-4904-9722-903D2BF79A9D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TempleOfDoom_Game", "TempleOfDoom_Controller\TempleOfDoom_Game.csproj", "{F0AD2DD4-CD52-4C9E-9864-17CF8E7E0F12}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D44D21F3-791B-4F90-98A9-6EAFF2FFA5C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D44D21F3-791B-4F90-98A9-6EAFF2FFA5C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D44D21F3-791B-4F90-98A9-6EAFF2FFA5C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D44D21F3-791B-4F90-98A9-6EAFF2FFA5C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A24B0C1-6126-4C02-9AAF-6ACF24D8E6BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A24B0C1-6126-4C02-9AAF-6ACF24D8E6BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A24B0C1-6126-4C02-9AAF-6ACF24D8E6BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A24B0C1-6126-4C02-9AAF-6ACF24D8E6BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5668D2B-54DC-4904-9722-903D2BF79A9D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5668D2B-54DC-4904-9722-903D2BF79A9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5668D2B-54DC-4904-9722-903D2BF79A9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5668D2B-54DC-4904-9722-903D2BF79A9D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F0AD2DD4-CD52-4C9E-9864-17CF8E7E0F12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F0AD2DD4-CD52-4C9E-9864-17CF8E7E0F12}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F0AD2DD4-CD52-4C9E-9864-17CF8E7E0F12}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F0AD2DD4-CD52-4C9E-9864-17CF8E7E0F12}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {961F2A23-10EC-4618-8965-D73077B3351E}
+	EndGlobalSection
+EndGlobal
