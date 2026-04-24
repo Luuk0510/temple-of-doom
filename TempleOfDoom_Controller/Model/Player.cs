@@ -104,21 +104,13 @@ namespace TempleOfDoom_Game.Model
         /// <summary>
         ///  Bereken de nieuwe coördinaten van de speler op basis van de richting.
         /// </summary>
-        private Coordinates UpdateCoordinates(Direction direction)
+        private Coordinates UpdateCoordinates(Direction direction) => direction switch
         {
-            switch (direction)
-            {
-                case Direction.North:
-                    return new Coordinates(Coordinates.PositionX, Coordinates.PositionY - 1);
-                case Direction.East:
-                    return new Coordinates(Coordinates.PositionX + 1, Coordinates.PositionY);
-                case Direction.South:
-                    return new Coordinates(Coordinates.PositionX, Coordinates.PositionY + 1);
-                case Direction.West:
-                    return new Coordinates(Coordinates.PositionX - 1, Coordinates.PositionY);
-                default:
-                    throw new InvalidOperationException("Ongeldige richting.");
-            }
-        }
+            Direction.North => new Coordinates(Coordinates.PositionX, Coordinates.PositionY - 1),
+            Direction.East => new Coordinates(Coordinates.PositionX + 1, Coordinates.PositionY),
+            Direction.South => new Coordinates(Coordinates.PositionX, Coordinates.PositionY + 1),
+            Direction.West => new Coordinates(Coordinates.PositionX - 1, Coordinates.PositionY),
+            _ => throw new InvalidOperationException("Ongeldige richting."),
+        };
     }
 }
