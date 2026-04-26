@@ -10,7 +10,7 @@ public abstract class BaseDoorDecorator : IDoor
 
     public virtual bool IsOpen { get => _decoratedDoor.IsOpen; set => _decoratedDoor.IsOpen = value; }
 
-    public virtual string Color { get => _decoratedDoor.Color; set => _decoratedDoor.Color = value; }
+    public virtual string? Color { get => _decoratedDoor.Color; set => _decoratedDoor.Color = value; }
 
     public virtual bool CanPass(Player player) => _decoratedDoor.CanPass(player);
     

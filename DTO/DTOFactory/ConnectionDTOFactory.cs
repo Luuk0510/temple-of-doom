@@ -93,7 +93,7 @@ public class ConnectionDTOFactory
                 int index = GetIndexFromDirection(connectionDTO, direction);
                 if (index != 0)
                 {
-                    Room room = _rooms[index - 1];
+                    Room room = GetRoomById(index);
                     map.Add(room, direction);
                 }
             }
@@ -131,6 +131,12 @@ public class ConnectionDTOFactory
         Direction.West => connection.WEST,
         _ => 0,
     };
+
+    private Room GetRoomById(int roomId)
+    {
+        return _rooms.FirstOrDefault(room => room.Id == roomId)
+            ?? throw new InvalidOperationException($"Room met id {roomId} niet gevonden.");
+    }
 
     /// <summary>
     ///  Geef de omgekeerde richting terug.
