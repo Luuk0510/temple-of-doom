@@ -37,26 +37,18 @@ public class RoomFactory
     /// </summary>
     private Room CreateRoom(RoomDTO roomDTO)
     {
-        List<IItem>? createdItems = _itemsDTOFactory.CreateItems(roomDTO.items);
-        List<IItem> items = createdItems ?? [];
+        List<IItem> items = _itemsDTOFactory.CreateItems(roomDTO.Items);
 
         List<SpecialFloorTile> specialFloorTiles = [];
-        if (roomDTO.specialFloorTiles != null)
+        foreach (SpecialFloorTileDTO tileDTO in roomDTO.SpecialFloorTiles)
         {
-            foreach (SpecialFloorTileDTO tileDTO in roomDTO.specialFloorTiles)
-            {
-                SpecialFloorTile tile = new SpecialFloorTile(tileDTO.type, tileDTO.x, tileDTO.y);
-                specialFloorTiles.Add(tile);
-            }
+            SpecialFloorTile tile = new SpecialFloorTile(tileDTO.Type, tileDTO.X, tileDTO.Y);
+            specialFloorTiles.Add(tile);
         }
 
-        List<IEnemy> enemies = [];
-        if (roomDTO.enemies != null)
-        {
-            enemies = _enemyDTOFactory.CreateEnemies(roomDTO.enemies);
-        }
+        List<IEnemy> enemies = _enemyDTOFactory.CreateEnemies(roomDTO.Enemies);
 
-        return new Room(roomDTO.id, roomDTO.width, roomDTO.height, roomDTO.type, items, specialFloorTiles, enemies);
+        return new Room(roomDTO.Id, roomDTO.Width, roomDTO.Height, roomDTO.Type, items, specialFloorTiles, enemies);
     }
 
 }

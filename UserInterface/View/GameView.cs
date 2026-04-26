@@ -49,20 +49,20 @@ public class GameView
 
         Console.WriteLine("");
 
-        DrawInventory("Key", item => item is Key key, "K ", key => ConsoleColorSetter.SetConsoleColorBasedOnString(key.Color));
-        DrawInventory("sankaraStone", item => item is SankaraStone, "S ", key => Console.ForegroundColor = ConsoleColor.DarkMagenta);
+        DrawInventory("Key", item => item is Key, "K ", item => ConsoleColorSetter.SetConsoleColorBasedOnString(((Key)item).Color));
+        DrawInventory("sankaraStone", item => item is SankaraStone, "S ", _ => Console.ForegroundColor = ConsoleColor.DarkMagenta);
 
         Console.WriteLine("");
     }
 
-    private void DrawInventory(string itemName, Func<ICollectableItem, bool> filter, string symbol, Action<Key> colorSetter)
+    private void DrawInventory(string itemName, Func<ICollectableItem, bool> filter, string symbol, Action<ICollectableItem> colorSetter)
     {
         Console.Write($"{itemName}: ");
         foreach (ICollectableItem collectableItem in _player.Inventory)
         {
             if (filter(collectableItem))
             {
-                colorSetter(collectableItem as Key);
+                colorSetter(collectableItem);
                 Console.Write(symbol);
                 Console.ResetColor();
             }

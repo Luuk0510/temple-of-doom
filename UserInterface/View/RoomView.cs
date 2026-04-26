@@ -118,7 +118,7 @@ public class RoomView
             return false;
         }
 
-        switch (tile.Type.ToLower())
+        switch (tile.Type.ToLowerInvariant())
         {
             case "wall":
                 WriteColored("# ", ConsoleColor.Yellow);

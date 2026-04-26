@@ -3,7 +3,7 @@ internal class ConsoleColorSetter
 {
     public static void SetConsoleColorBasedOnString(string color)
     {
-        Console.ForegroundColor = color.ToLower() switch
+        Console.ForegroundColor = color.ToLowerInvariant() switch
         {
             "red" => ConsoleColor.Red,
             "blue" => ConsoleColor.Blue,

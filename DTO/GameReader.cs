@@ -24,15 +24,15 @@ public class GameReader
 
         // Bouw Rooms
         RoomFactory roomFactory = new RoomFactory(itemsDTOFactory, enemyDTOFactory);
-        List<Room> rooms = roomFactory.CreateRooms(root.rooms);
+        List<Room> rooms = roomFactory.CreateRooms(root.Rooms);
 
         // Bouw Connections
         ConnectionDTOFactory connectionDTOFactory = new ConnectionDTOFactory(rooms, doorDTOFactory);
-        List<Connection> connections = connectionDTOFactory.CreateConnections(root.connections);
+        List<Connection> connections = connectionDTOFactory.CreateConnections(root.Connections);
 
         // Bouw Player
         PlayerDTOFactory playerDTOFactory = new PlayerDTOFactory(rooms.ToArray());
-        Player player = playerDTOFactory.CreatePlayer(root.player);
+        Player player = playerDTOFactory.CreatePlayer(root.Player);
 
         return new GameApplication(rooms, player, connections);
     }

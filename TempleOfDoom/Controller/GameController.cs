@@ -6,7 +6,7 @@ using TempleOfDoom_UserInterface.View;
 namespace TempleOfDoom.Controller;
 public class GameController
 {
-    private const string _filePath = "../../../../DTO/JSON/TempleOfDoom.json";
+    private static readonly string _filePath = Path.Combine(AppContext.BaseDirectory, "JSON", "TempleOfDoom.json");
 
     private GameReader _gameReader;
     private GameApplication _gameApplication;

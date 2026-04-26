@@ -13,7 +13,7 @@ public class EnemyDTOFactory
     /// </summary>
     public List<IEnemy> CreateEnemies(EnemyDTO[] enemiesDTO)
     {
-        if (enemiesDTO == null || enemiesDTO.Length == 0)
+        if (enemiesDTO.Length == 0)
         {
             return [];
         }
@@ -37,17 +37,17 @@ public class EnemyDTOFactory
     ///  </summary>
     private IEnemy? CreateEnemyFromDTO(EnemyDTO enemyDTO, int enemyLives)
     {
-        switch (enemyDTO.type?.ToLower())
+        switch (enemyDTO.Type.ToLowerInvariant())
         {
             case "horizontal":
                 {
-                    HorizontallyMovingEnemy enemy = new HorizontallyMovingEnemy(enemyLives, enemyDTO.x, enemyDTO.y, enemyDTO.minX, enemyDTO.maxX);
+                    HorizontallyMovingEnemy enemy = new HorizontallyMovingEnemy(enemyLives, enemyDTO.X, enemyDTO.Y, enemyDTO.MinX, enemyDTO.MaxX);
                     enemy.CurrentField = new DummyField(); 
                     return new EnemyAdapter(enemy);
                 }
             case "vertical":
                 {
-                    VerticallyMovingEnemy enemy = new VerticallyMovingEnemy(enemyLives, enemyDTO.x, enemyDTO.y, enemyDTO.minY, enemyDTO.maxY);
+                    VerticallyMovingEnemy enemy = new VerticallyMovingEnemy(enemyLives, enemyDTO.X, enemyDTO.Y, enemyDTO.MinY, enemyDTO.MaxY);
                     enemy.CurrentField = new DummyField();
                     return new EnemyAdapter(enemy);
                 }

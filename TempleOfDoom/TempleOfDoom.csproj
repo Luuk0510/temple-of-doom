@@ -17,6 +17,9 @@
     <None Update="CODE_TempleOfDoom_DownloadableContent.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="..\DTO\JSON\TempleOfDoom.json" Link="JSON\TempleOfDoom.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

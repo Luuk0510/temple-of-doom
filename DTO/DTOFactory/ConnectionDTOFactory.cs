@@ -43,14 +43,14 @@ public class ConnectionDTOFactory
         Dictionary<Room, Direction> roomDirectionMap = BuildRoomDirectionMap(connectionDTO);
 
         // Check het aantal rooms
-        int expectedRooms = (connectionDTO.within.HasValue && connectionDTO.within.Value != 0) ? 1 : 2;
+        int expectedRooms = (connectionDTO.Within.HasValue && connectionDTO.Within.Value != 0) ? 1 : 2;
         if (roomDirectionMap.Count != expectedRooms)
         {
             throw new InvalidOperationException("Invalid connection data.");
         }
 
         // Bouw de connection
-        Connection newConnection = new Connection(roomDirectionMap, connectionDTO.within);
+        Connection newConnection = new Connection(roomDirectionMap, connectionDTO.Within);
 
         // Bouw deur
         IDoor? door = BuildDoorIfNeeded(connectionDTO, roomDirectionMap);
@@ -73,12 +73,12 @@ public class ConnectionDTOFactory
     /// </summary>
     private Dictionary<Room, Direction> BuildRoomDirectionMap(ConnectionDTO connectionDTO)
     {
-        int expectedRooms = (connectionDTO.within.HasValue && connectionDTO.within.Value != 0) ? 1 : 2;
+        int expectedRooms = (connectionDTO.Within.HasValue && connectionDTO.Within.Value != 0) ? 1 : 2;
         Dictionary<Room, Direction> map = new Dictionary<Room, Direction>();
 
-        if (expectedRooms == 1)
+        if (connectionDTO.Within is int innerRoomId && innerRoomId != 0)
         {
-            Room? innerRoom = _rooms.FirstOrDefault(r => r.Id == connectionDTO.within.Value);
+            Room? innerRoom = _rooms.FirstOrDefault(r => r.Id == innerRoomId);
             if (innerRoom != null)
             {
                 map.Add(innerRoom, Direction.North);
@@ -93,7 +93,7 @@ public class ConnectionDTOFactory
                 int index = GetIndexFromDirection(connectionDTO, direction);
                 if (index != 0)
                 {
-                    Room room = _rooms[index - 1];
+                    Room room = GetRoomById(index);
                     map.Add(room, direction);
                 }
             }
@@ -106,7 +106,7 @@ public class ConnectionDTOFactory
     /// </summary>
     private IDoor? BuildDoorIfNeeded(ConnectionDTO connectionDTO, Dictionary<Room, Direction> roomDirectionMap)
     {
-        if (connectionDTO.doors == null)
+        if (connectionDTO.Doors.Length == 0)
         {
             return null;
         }
@@ -116,7 +116,7 @@ public class ConnectionDTOFactory
             .SelectMany(r => r.Items.OfType<PressurePlate>())
             .ToList();
 
-        return _doorDTOFactory.InitializeDoors(connectionDTO.doors, connectionPressurePlates);
+        return _doorDTOFactory.InitializeDoors(connectionDTO.Doors, connectionPressurePlates);
     }
 
 
@@ -125,12 +125,18 @@ public class ConnectionDTOFactory
     /// </summary>
     private int GetIndexFromDirection(ConnectionDTO connection, Direction direction) => direction switch
     {
-        Direction.North => connection.NORTH,
-        Direction.East => connection.EAST,
-        Direction.South => connection.SOUTH,
-        Direction.West => connection.WEST,
+        Direction.North => connection.North,
+        Direction.East => connection.East,
+        Direction.South => connection.South,
+        Direction.West => connection.West,
         _ => 0,
     };
+
+    private Room GetRoomById(int roomId)
+    {
+        return _rooms.FirstOrDefault(room => room.Id == roomId)
+            ?? throw new InvalidOperationException($"Room met id {roomId} niet gevonden.");
+    }
 
     /// <summary>
     ///  Geef de omgekeerde richting terug.
