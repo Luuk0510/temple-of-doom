@@ -20,13 +20,13 @@ public class DoorDTOFactory
 
         foreach (DoorDTO doorDTO in doors)
         {
-            switch (doorDTO.type)
+            switch (doorDTO.Type.ToLowerInvariant())
             {
                 case "colored":
-                    newDoor = new ColoredDoorDecorator(newDoor, doorDTO.color ?? throw new InvalidOperationException("Een colored door moet een color hebben."));
+                    newDoor = new ColoredDoorDecorator(newDoor, doorDTO.Color ?? throw new InvalidOperationException("Een colored door moet een color hebben."));
                     break;
                 case "open on stones in room":
-                    newDoor = new OpenOnStonesInRoomDoorDecorator(newDoor, doorDTO.no_of_stones);
+                    newDoor = new OpenOnStonesInRoomDoorDecorator(newDoor, doorDTO.NoOfStones);
                     break;
                 case "toggle":
                     toggleDoor = true;

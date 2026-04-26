@@ -9,9 +9,9 @@ public class PlayerDTOFactory
 
     public Player CreatePlayer(DTO.PlayerDTO player)
     {
-        int startRoomId = player.startRoomId - 1;
-        Coordinates startCoordinates = new Coordinates(player.startX, player.startY);
+        int startRoomId = player.StartRoomId - 1;
+        Coordinates startCoordinates = new Coordinates(player.StartX, player.StartY);
 
-        return new Player(_rooms[startRoomId], startCoordinates, player.lives);
+        return new Player(_rooms[startRoomId], startCoordinates, player.Lives);
     }
 }

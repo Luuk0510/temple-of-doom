@@ -30,21 +30,21 @@ public class ItemsDTOFactory
     /// </summary>
     private IItem? CreateItemFromDTO(ItemDTO itemDTO)
     {
-        Coordinates coordinates = new Coordinates(itemDTO.x, itemDTO.y);
+        Coordinates coordinates = new Coordinates(itemDTO.X, itemDTO.Y);
 
-        switch (itemDTO.type.ToLower())
+        switch (itemDTO.Type.ToLowerInvariant())
         {
             case "disappearing boobytrap":
-                return new DisappearingBoobyTrap(coordinates, itemDTO.damage);
+                return new DisappearingBoobyTrap(coordinates, itemDTO.Damage);
 
             case "sankara stone":
                 return new SankaraStone(coordinates);
 
             case "boobytrap":
-                return new BoobyTrap(coordinates, itemDTO.damage);
+                return new BoobyTrap(coordinates, itemDTO.Damage);
 
             case "key":
-                return new Key(coordinates, itemDTO.color ?? throw new InvalidOperationException("Een key item moet een color hebben."));
+                return new Key(coordinates, itemDTO.Color ?? throw new InvalidOperationException("Een key item moet een color hebben."));
 
             case "pressure plate":
                 return new PressurePlate(coordinates);

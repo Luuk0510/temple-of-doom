@@ -43,14 +43,14 @@ public class ConnectionDTOFactory
         Dictionary<Room, Direction> roomDirectionMap = BuildRoomDirectionMap(connectionDTO);
 
         // Check het aantal rooms
-        int expectedRooms = (connectionDTO.within.HasValue && connectionDTO.within.Value != 0) ? 1 : 2;
+        int expectedRooms = (connectionDTO.Within.HasValue && connectionDTO.Within.Value != 0) ? 1 : 2;
         if (roomDirectionMap.Count != expectedRooms)
         {
             throw new InvalidOperationException("Invalid connection data.");
         }
 
         // Bouw de connection
-        Connection newConnection = new Connection(roomDirectionMap, connectionDTO.within);
+        Connection newConnection = new Connection(roomDirectionMap, connectionDTO.Within);
 
         // Bouw deur
         IDoor? door = BuildDoorIfNeeded(connectionDTO, roomDirectionMap);
@@ -73,10 +73,10 @@ public class ConnectionDTOFactory
     /// </summary>
     private Dictionary<Room, Direction> BuildRoomDirectionMap(ConnectionDTO connectionDTO)
     {
-        int expectedRooms = (connectionDTO.within.HasValue && connectionDTO.within.Value != 0) ? 1 : 2;
+        int expectedRooms = (connectionDTO.Within.HasValue && connectionDTO.Within.Value != 0) ? 1 : 2;
         Dictionary<Room, Direction> map = new Dictionary<Room, Direction>();
 
-        if (connectionDTO.within is int innerRoomId && innerRoomId != 0)
+        if (connectionDTO.Within is int innerRoomId && innerRoomId != 0)
         {
             Room? innerRoom = _rooms.FirstOrDefault(r => r.Id == innerRoomId);
             if (innerRoom != null)
@@ -106,7 +106,7 @@ public class ConnectionDTOFactory
     /// </summary>
     private IDoor? BuildDoorIfNeeded(ConnectionDTO connectionDTO, Dictionary<Room, Direction> roomDirectionMap)
     {
-        if (connectionDTO.doors.Length == 0)
+        if (connectionDTO.Doors.Length == 0)
         {
             return null;
         }
@@ -116,7 +116,7 @@ public class ConnectionDTOFactory
             .SelectMany(r => r.Items.OfType<PressurePlate>())
             .ToList();
 
-        return _doorDTOFactory.InitializeDoors(connectionDTO.doors, connectionPressurePlates);
+        return _doorDTOFactory.InitializeDoors(connectionDTO.Doors, connectionPressurePlates);
     }
 
 
@@ -125,10 +125,10 @@ public class ConnectionDTOFactory
     /// </summary>
     private int GetIndexFromDirection(ConnectionDTO connection, Direction direction) => direction switch
     {
-        Direction.North => connection.NORTH,
-        Direction.East => connection.EAST,
-        Direction.South => connection.SOUTH,
-        Direction.West => connection.WEST,
+        Direction.North => connection.North,
+        Direction.East => connection.East,
+        Direction.South => connection.South,
+        Direction.West => connection.West,
         _ => 0,
     };
 
