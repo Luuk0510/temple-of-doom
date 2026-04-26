@@ -1,11 +1,11 @@
 ﻿namespace TempleOfDoom_DTO.DTO;
 public class GameDTO
 {
-    public RoomDTO[] rooms { get; set; }
-    public ConnectionDTO[] connections { get; set; }
-    public PlayerDTO player { get; set; }
-    public EnemyDTO[] enemies { get; set; }
-    public SpecialFloorTileDTO[] specialFloorTiles { get; set; }
+    public required RoomDTO[] rooms { get; init; }
+    public required ConnectionDTO[] connections { get; init; }
+    public required PlayerDTO player { get; init; }
+    public EnemyDTO[] enemies { get; init; } = [];
+    public SpecialFloorTileDTO[] specialFloorTiles { get; init; } = [];
 }
 
 public class PlayerDTO
@@ -19,30 +19,30 @@ public class PlayerDTO
 public class RoomDTO
 {
     public int id { get; set; }
-    public string type { get; set; }
+    public required string type { get; init; }
     public int width { get; set; }
     public int height { get; set; }
-    public ItemDTO[] items { get; set; }
-    public DoorDTO[] doors { get; set; }
-    public EnemyDTO[] enemies { get; set; } 
-    public SpecialFloorTileDTO[] specialFloorTiles { get; set; }
+    public ItemDTO[] items { get; init; } = [];
+    public DoorDTO[] doors { get; init; } = [];
+    public EnemyDTO[] enemies { get; init; } = [];
+    public SpecialFloorTileDTO[] specialFloorTiles { get; init; } = [];
 
 }
 
 public class ItemDTO
 {
-    public string type { get; set; }
+    public required string type { get; init; }
     public int damage { get; set; }
     public int x { get; set; }
     public int y { get; set; }
-    public string color { get; set; }
+    public string? color { get; set; }
 }
 
 public class ConnectionDTO
 {
     public int NORTH { get; set; }
     public int SOUTH { get; set; }
-    public DoorDTO[] doors { get; set; }
+    public DoorDTO[] doors { get; init; } = [];
     public int WEST { get; set; }
     public int EAST { get; set; }
     public bool? horizontal { get; set; }
@@ -51,14 +51,14 @@ public class ConnectionDTO
 
 public class DoorDTO
 {
-    public string type { get; set; }
-    public string color { get; set; }
+    public required string type { get; init; }
+    public string? color { get; set; }
     public int no_of_stones { get; set; }
 }
 
 public class EnemyDTO
 {
-    public string type { get; set; }
+    public required string type { get; init; }
     public int x { get; set; }
     public int y { get; set; }
     public int minX { get; set; }
@@ -69,7 +69,7 @@ public class EnemyDTO
 
 public class SpecialFloorTileDTO
 {
-    public string type { get; set; }
+    public required string type { get; init; }
     public int x { get; set; }
     public int y { get; set; }
 }

@@ -10,13 +10,8 @@ public class ItemsDTOFactory
     /// <summary>
     ///  Maakt IItem objecten op basis van ItemDTO[].
     /// </summary>
-    public List<IItem>? CreateItems(ItemDTO[] itemsDTO)
+    public List<IItem> CreateItems(ItemDTO[] itemsDTO)
     {
-        if (itemsDTO == null)
-        {
-            return null;
-        }
-
         List<IItem> itemList = [];
         foreach (ItemDTO itemDTO in itemsDTO)
         {
@@ -37,7 +32,7 @@ public class ItemsDTOFactory
     {
         Coordinates coordinates = new Coordinates(itemDTO.x, itemDTO.y);
 
-        switch (itemDTO.type?.ToLower())
+        switch (itemDTO.type.ToLower())
         {
             case "disappearing boobytrap":
                 return new DisappearingBoobyTrap(coordinates, itemDTO.damage);
@@ -49,7 +44,7 @@ public class ItemsDTOFactory
                 return new BoobyTrap(coordinates, itemDTO.damage);
 
             case "key":
-                return new Key(coordinates, itemDTO.color);
+                return new Key(coordinates, itemDTO.color ?? throw new InvalidOperationException("Een key item moet een color hebben."));
 
             case "pressure plate":
                 return new PressurePlate(coordinates);

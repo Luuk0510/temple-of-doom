@@ -10,7 +10,7 @@ public class DoorDTOFactory
     /// </summary>
     public IDoor? InitializeDoors(DoorDTO[] doors, List<PressurePlate> pressurePlatesList)
     {
-        if (doors == null)
+        if (doors.Length == 0)
         {
             return null;
         }
@@ -23,7 +23,7 @@ public class DoorDTOFactory
             switch (doorDTO.type)
             {
                 case "colored":
-                    newDoor = new ColoredDoorDecorator(newDoor, doorDTO.color);
+                    newDoor = new ColoredDoorDecorator(newDoor, doorDTO.color ?? throw new InvalidOperationException("Een colored door moet een color hebben."));
                     break;
                 case "open on stones in room":
                     newDoor = new OpenOnStonesInRoomDoorDecorator(newDoor, doorDTO.no_of_stones);

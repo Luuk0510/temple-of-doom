@@ -76,9 +76,9 @@ public class ConnectionDTOFactory
         int expectedRooms = (connectionDTO.within.HasValue && connectionDTO.within.Value != 0) ? 1 : 2;
         Dictionary<Room, Direction> map = new Dictionary<Room, Direction>();
 
-        if (expectedRooms == 1)
+        if (connectionDTO.within is int innerRoomId && innerRoomId != 0)
         {
-            Room? innerRoom = _rooms.FirstOrDefault(r => r.Id == connectionDTO.within.Value);
+            Room? innerRoom = _rooms.FirstOrDefault(r => r.Id == innerRoomId);
             if (innerRoom != null)
             {
                 map.Add(innerRoom, Direction.North);
@@ -106,7 +106,7 @@ public class ConnectionDTOFactory
     /// </summary>
     private IDoor? BuildDoorIfNeeded(ConnectionDTO connectionDTO, Dictionary<Room, Direction> roomDirectionMap)
     {
-        if (connectionDTO.doors == null)
+        if (connectionDTO.doors.Length == 0)
         {
             return null;
         }

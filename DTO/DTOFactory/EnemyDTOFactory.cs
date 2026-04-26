@@ -13,7 +13,7 @@ public class EnemyDTOFactory
     /// </summary>
     public List<IEnemy> CreateEnemies(EnemyDTO[] enemiesDTO)
     {
-        if (enemiesDTO == null || enemiesDTO.Length == 0)
+        if (enemiesDTO.Length == 0)
         {
             return [];
         }
@@ -37,7 +37,7 @@ public class EnemyDTOFactory
     ///  </summary>
     private IEnemy? CreateEnemyFromDTO(EnemyDTO enemyDTO, int enemyLives)
     {
-        switch (enemyDTO.type?.ToLower())
+        switch (enemyDTO.type.ToLower())
         {
             case "horizontal":
                 {
